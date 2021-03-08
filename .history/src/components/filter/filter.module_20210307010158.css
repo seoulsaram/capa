@@ -1,0 +1,14 @@
+.filterContainer {
+  display: flex;
+}
+
+.filterBtn {
+  margin: 15px 4px;
+  padding: 8px 10px;
+  background-color: transparent;
+  border: none;
+  border-radius: 0.2rem;
+  outline: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+}

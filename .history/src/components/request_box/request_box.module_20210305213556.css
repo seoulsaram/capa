@@ -1,0 +1,19 @@
+@value MakeBlue,MakeBlack,MakeLightBlue,MakeGrey,MakeLightGrey,MakeYellow from '../../common/color.css';
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0px;
+}
+
+.card {
+  border: 1px solid MakeLightGrey;
+  padding: 10px 15px;
+}
+
+.line {
+  width: 90%;
+  height: 1px;
+  background-color: MakeLightGrey;
+}

@@ -1,0 +1,96 @@
+@value MakeBlue,MakeBlack,MakeLightBlue,MakeGrey,MakeLightGrey,MakeYellow from '../../common/color.css';
+
+* {
+  box-sizing: border-box;
+}
+.cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  width: 30%;
+  border: 1px solid MakeLightGrey;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  color: MakeBlack;
+}
+
+.card:hover {
+  border: 1px solid MakeLightBlue;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.titleContainer > h2 {
+  margin-bottom: 0px;
+}
+
+.client {
+  margin: 8px 0px;
+}
+.due {
+  color: MakeGrey;
+  margin-top: 28px;
+}
+
+.status {
+  border: 1px solid MakeYellow;
+  border-radius: 45px;
+  padding: 4px;
+  font-size: 0.8rem;
+  color: MakeYellow;
+}
+
+.line {
+  width: 98%;
+  height: 2px;
+  margin: auto;
+  background-color: MakeLightGrey;
+}
+.bottom {
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+td {
+  width: 25%;
+  padding: 4px;
+}
+
+.orderBold {
+  font-weight: 700;
+}
+
+.reqBtn,
+.chatBtn {
+  margin: 15px 4px;
+  padding: 8px 10px;
+  background-color: transparent;
+  border: none;
+  border-radius: 0.2rem;
+  outline: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.reqBtn {
+  color: white;
+  background-color: MakeLightBlue;
+}
+
+.chatBtn {
+  border: 1px solid MakeLightBlue;
+  color: MakeLightBlue;
+}

@@ -1,0 +1,9 @@
+@value MakeBlue,MakeBlack,MakeLightBlue,MakeGrey,MakeLightGrey,MakeYellow from '../../common/color.css';
+.section {
+  padding: 54px;
+  color: MakeBlack;
+}
+
+.title {
+  margin: 8px;
+}

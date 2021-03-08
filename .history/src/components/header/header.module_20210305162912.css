@@ -1,0 +1,26 @@
+@value MakeBlue from '../../common/color.css';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 20px;
+  background-color: MakeBlue;
+  color: white;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+}
+
+.line {
+  width: 2px;
+  height: 50%;
+  background-color: white;
+  margin: 0px 10px;
+}

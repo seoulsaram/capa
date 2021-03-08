@@ -1,0 +1,63 @@
+@value MakeBlue,MakeBlack,MakeLightBlue,MakeGrey,MakeLightGrey,MakeYellow from '../../common/color.css';
+* {
+  box-sizing: border-box;
+}
+.cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  width: 30%;
+  border: 1px solid MakeLightGrey;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 10px;
+}
+
+.card:hover {
+  border: 1px solid MakeLightBlue;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.status {
+  border: 1px solid MakeYellow;
+  border-radius: 45px;
+  padding: 4px;
+  font-size: 0.8rem;
+  color: MakeYellow;
+}
+
+.line {
+  width: 98%;
+  height: 2px;
+  margin: auto;
+  background-color: MakeLightGrey;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+}
+
+.order {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+.orderBold {
+  font-weight: 300;
+}

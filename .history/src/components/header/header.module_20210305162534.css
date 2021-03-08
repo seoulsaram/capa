@@ -1,0 +1,16 @@
+@value Blue from '../../common/color.css';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 20px;
+  background-color: Blue;
+}
+
+.headerLeft {
+  display: flex;
+}
+
+.headerRight {
+  display: flex;
+}
