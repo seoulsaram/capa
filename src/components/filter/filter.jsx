@@ -1,47 +1,38 @@
 import React, { useState } from "react";
+import Checkbox from "./checkbox/checkbox";
 import styles from "./filter.module.css";
 
 const Filter = ({ reqInfo, handleFilter }) => {
-  const [checkedMethods, setCheckedMethods] = useState([]);
-  const [checkedMaterials, setCheckedMaterials] = useState([]);
+  const [checked, setChecked] = useState([
+    {
+      method: [],
+      material: [],
+    },
+  ]);
 
-  const checked = {
-    method: ["밀링", "선반"],
-    material: ["알루미늄", "탄소강", "구리", "합금강", "강철"],
-  };
-  //const material =
+  const values = [
+    {
+      method: ["밀링", "선반"],
+      material: ["알루미늄", "탄소강", "구리", "합금강", "강철"],
+    },
+  ];
 
-  const handleMethods = (value) => {
-    const currentIndex = checkedMethods.indexOf(value);
-    const newChecked = [...checkedMethods];
+  const handleToggle = (value, key) => {
+    const currentIndex = checked[0][key].indexOf(value);
+    const newChecked = [...checked];
 
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-    console.log(newChecked);
-    setCheckedMethods(newChecked);
-    handleFilter(newChecked, "method");
-  };
-
-  const handleMaterials = (value) => {
-    const currentIndex = checkedMaterials.indexOf(value);
-    const newChecked = [...checkedMaterials];
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setCheckedMaterials(newChecked);
-    handleFilter(newChecked, "material");
+    newChecked.forEach((newChecked) => {
+      if (currentIndex === -1) {
+        newChecked[key].push(value);
+      } else {
+        newChecked[key].splice(currentIndex, 1);
+      }
+    });
+    setChecked(newChecked);
+    handleFilter(newChecked, key);
   };
 
-  const resetFilters = () => {
-    setCheckedMaterials(0);
-    setCheckedMethods(0);
-  };
+  const resetFilters = () => {};
 
   return (
     <section className={styles.section}>
@@ -53,21 +44,21 @@ const Filter = ({ reqInfo, handleFilter }) => {
       5. 선택된 필터 카운트해서 버튼에 갯수 보여주기(done)
       6.온클릭이벤트로 : 체크드 속성 주고 토글로 해서 아래 필터메뉴 보이기
       7. 리셋필터 기능 넣기
-        8. 상담중만 필터하는 기능 넣기
-        9.클릭된 버튼 파란바탕으로
+      8. 상담중만 필터하는 기능 넣기
+      9.클릭된 버튼 파란바탕으로
       */}
       <div className={styles.filterContainer}>
         <button className={styles.filterBtn}>
-          가공방식{checkedMethods.length > 0 && <p>({checkedMethods.length})</p>}
+          가공방식{checked[0].method.length > 0 && <p>({checked[0].method.length})</p>}
           <p className={styles.down}>▾</p>
         </button>
 
         {/* 재료 */}
         <button className={styles.filterBtn}>
-          재료{checkedMaterials.length > 0 && <p>({checkedMaterials.length})</p>}
+          재료{checked[0].material.length > 0 && <p>({checked[0].material.length})</p>}
           <p className={styles.down}>▾</p>
         </button>
-        {(checkedMethods.length > 0 || checkedMaterials.length > 0) && (
+        {(checked[0].method.length > 0 || checked[0].material.length > 0) && (
           <div className={styles.reset} onClick={resetFilters}>
             <i className="fas fa-redo-alt"></i>필터링 리셋
           </div>
@@ -75,31 +66,19 @@ const Filter = ({ reqInfo, handleFilter }) => {
       </div>
 
       <div className={styles.filter}>
-        {Object.keys(checked).map((methods) => (
-          <label htmlFor={methods.method} key={methods.method}>
-            <input
-              type="checkbox"
-              name={methods.method}
-              value={methods.method}
-              onChange={(e) => handleMethods(e.currentTarget.value)}
-            />
-            {methods.method}
-          </label>
-        ))}
+        {values.map((value) => {
+          return value.method.map((each, index) => {
+            return <Checkbox values={each} onClick={handleToggle} key={index} keyName="method" />;
+          });
+        })}
       </div>
 
       <div className={styles.filter}>
-        {Object.keys(checked).map((materials) => (
-          <label htmlFor={materials.material} key={materials.material}>
-            <input
-              type="checkbox"
-              name={materials.material}
-              value={materials.material}
-              onChange={(e) => handleMaterials(e.currentTarget.value)}
-            />
-            {materials}
-          </label>
-        ))}
+        {values.map((value) => {
+          return value.material.map((each, index) => {
+            return <Checkbox values={each} onClick={handleToggle} key={index} keyName="material" />;
+          });
+        })}
       </div>
 
       <div></div>

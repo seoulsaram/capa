@@ -5,7 +5,7 @@ import styles from "./item_container.module.css";
 
 const ItemContainer = ({ requestInfo }) => {
   const [reqInfo, setReqInfo] = useState([]);
-  const [filtered, setFiltered] = useState({ method: [], material: [] });
+  const [filtered, setFiltered] = useState([]);
 
   useEffect(() => {
     requestInfo.getInfo().then((info) => setReqInfo(info));
@@ -13,20 +13,22 @@ const ItemContainer = ({ requestInfo }) => {
 
   const handleFilter = (filter, key) => {
     const newFiltered = { ...filtered };
-    newFiltered[key] = filter;
-    setFiltered(newFiltered);
+    filter.forEach((filters) => {
+      newFiltered[key] = filters[key];
+    });
 
-    showFilteredRes(newFiltered);
+    setFiltered(newFiltered);
+    showFilteredRes(newFiltered, key);
   };
 
-  const showFilteredRes = (filtered) => {
-    console.log(filtered["method"]);
-    reqInfo.forEach((ii) => {
-      //console.log(ii);
+  const showFilteredRes = (filtered, key) => {
+    let result = [];
+    result = reqInfo.filter((info) => {
+      for (let value of filtered[key]) {
+        return (result = info[key].indexOf(value) !== -1);
+      }
     });
-    reqInfo.forEach((info) => {
-      console.log(`${filtered["method"]} : ${info["method"]}`);
-    });
+    setReqInfo(result);
   };
 
   return (
