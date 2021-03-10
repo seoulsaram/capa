@@ -5,7 +5,10 @@ class RequestInfo {
     };
   }
   async getInfo() {
-    const response = await fetch("http://localhost:3001/requests", this.getrequestOptions);
+    const response = await fetch(
+      "https://my-json-server.typicode.com/seoulsaram/jsonDB/requests",
+      this.getrequestOptions
+    );
     const res = await response.json();
     return res;
   }
@@ -18,7 +21,10 @@ class RequestInfo {
       filter["material"] &&
       filter["material"].length === 0
     ) {
-      const response = await fetch("http://localhost:3001/requests", this.getrequestOptions);
+      const response = await fetch(
+        "https://my-json-server.typicode.com/seoulsaram/jsonDB/requests",
+        this.getrequestOptions
+      );
       const res = await response.json();
       return res;
     } else {
