@@ -6,11 +6,11 @@ class RequestInfo {
   }
   async getInfo() {
     const response = await fetch(
-      "https://github.com/seoulsaram/jsonDB/blob/main/db.json/requests",
+      "https://github.com/seoulsaram/jsonDB/blob/main/db.json",
       this.getrequestOptions
     );
     const res = await response.json();
-    return res;
+    return res.requests;
   }
 
   async getSearchRes(filter, key) {
@@ -22,11 +22,11 @@ class RequestInfo {
       filter["material"].length === 0
     ) {
       const response = await fetch(
-        "https://github.com/seoulsaram/jsonDB/blob/main/db.json/requests",
+        "https://github.com/seoulsaram/jsonDB/blob/main/db.json/",
         this.getrequestOptions
       );
       const res = await response.json();
-      return res;
+      return res.requests;
     } else {
       const response = await fetch("http://localhost:3001/requests", this.getrequestOptions);
       const res = await response.json();
