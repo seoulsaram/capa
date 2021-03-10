@@ -8,34 +8,64 @@ const ItemContainer = ({ requestInfo }) => {
   const [filtered, setFiltered] = useState([]);
 
   useEffect(() => {
-    requestInfo.getInfo().then((info) => setReqInfo(info));
+    getData();
   }, [requestInfo]);
 
-  const handleFilter = (filter, key) => {
+  const getData = () => {
+    requestInfo
+      .getInfo()
+      .then((info) => setReqInfo(info))
+      .catch(alert);
+  };
+
+  const handleFilter = (filter, key, check) => {
     const newFiltered = { ...filtered };
     filter.forEach((filters) => {
       newFiltered[key] = filters[key];
     });
 
     setFiltered(newFiltered);
-    showFilteredRes(newFiltered, key);
+    showFilteredRes(newFiltered, key, check);
   };
 
   const showFilteredRes = (filtered, key) => {
-    let result = [];
-    result = reqInfo.filter((info) => {
-      for (let value of filtered[key]) {
-        return (result = info[key].indexOf(value) !== -1);
+    requestInfo.getSearchRes(filtered, key).then((info) => {
+      if (filtered[key].length < 0) {
+        getData();
+      } else {
+        setReqInfo(info);
       }
     });
-    setReqInfo(result);
+  };
+
+  const reset = () => {
+    getData();
+  };
+
+  //수정 필요
+
+  const filterConsult = (count) => {
+    if (count % 2 === 0) {
+      const filteredConsult = reqInfo.filter((info) => {
+        return info["status"] === "상담중";
+      });
+      setReqInfo(filteredConsult);
+    } else {
+      getData();
+    }
   };
 
   return (
+    //   검색결과가 없을 시의 화면 만들기
     <section className={styles.section}>
       <h2 className={styles.title}>들어온 요청</h2>
       <p className={styles.desc}>파트너님에게 딱 맞는 요청서를 찾아보세요.</p>
-      <Filter reqInfo={reqInfo} handleFilter={handleFilter} />
+      <Filter
+        reqInfo={reqInfo}
+        handleFilter={handleFilter}
+        reset={reset}
+        filterConsult={filterConsult}
+      />
 
       <ul className={styles.cards}>
         {reqInfo.map((info) => (

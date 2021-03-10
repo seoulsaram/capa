@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import styles from "./header.module.css";
 
-const Header = (props) => (
+const Header = memo(() => (
   <div className={styles.header}>
     <div className={styles.headerLeft}>
       <p>CAPA</p>
@@ -13,6 +13,6 @@ const Header = (props) => (
       <p>로그아웃</p>
     </div>
   </div>
-);
+));
 
 export default Header;
