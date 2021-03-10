@@ -6,6 +6,7 @@ import styles from "./item_container.module.css";
 const ItemContainer = ({ requestInfo }) => {
   const [reqInfo, setReqInfo] = useState([]);
   const [filtered, setFiltered] = useState([]);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     getData();
@@ -44,7 +45,7 @@ const ItemContainer = ({ requestInfo }) => {
 
   //수정 필요
 
-  const filterConsult = (count) => {
+  const filterConsult = () => {
     if (count % 2 === 0) {
       const filteredConsult = reqInfo.filter((info) => {
         return info["status"] === "상담중";
@@ -53,6 +54,7 @@ const ItemContainer = ({ requestInfo }) => {
     } else {
       getData();
     }
+    setCount(count + 1);
   };
 
   return (
@@ -66,12 +68,12 @@ const ItemContainer = ({ requestInfo }) => {
         reset={reset}
         filterConsult={filterConsult}
       />
-
       <ul className={styles.cards}>
         {reqInfo.map((info) => (
           <RequestBox reqInfo={info} key={info.id} />
         ))}
       </ul>
+      ;
     </section>
   );
 };

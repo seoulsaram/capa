@@ -10,7 +10,7 @@ ul {
 }
 
 .card {
-  width: 30%;
+  width: calc(100% / 3.5);
   border: 1px solid MakeLightGrey;
   border-radius: 3px;
   padding: 10px 15px;
@@ -26,10 +26,11 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 10px;
 }
 
 .titleContainer > h2 {
-  margin-bottom: 0px;
+  margin: 0;
 }
 
 .client {
@@ -41,6 +42,8 @@ ul {
 }
 
 .status {
+  width: 50px;
+  text-align: center;
   border: 1px solid MakeYellow;
   border-radius: 45px;
   padding: 4px;
@@ -88,4 +91,13 @@ td {
 .chatBtn {
   border: 1px solid MakeLightBlue;
   color: MakeLightBlue;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: 100%;
+    border: 1px solid MakeLightGrey;
+    border-radius: 3px;
+    margin: 10px auto;
+  }
 }

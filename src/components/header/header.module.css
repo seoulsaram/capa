@@ -13,6 +13,10 @@
   align-items: center;
 }
 
+.burger {
+  display: none;
+}
+
 .headerRight {
   display: flex;
   align-items: center;
@@ -23,4 +27,15 @@
   height: 50%;
   background-color: white;
   margin: 0px 14px;
+}
+
+@media screen and (max-width: 768px) {
+  .headerRight {
+    display: none;
+  }
+
+  .burger {
+    display: block;
+    margin: 4px;
+  }
 }

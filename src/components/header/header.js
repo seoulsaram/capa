@@ -4,6 +4,9 @@ import styles from "./header.module.css";
 const Header = memo(() => (
   <div className={styles.header}>
     <div className={styles.headerLeft}>
+      <div className={styles.burger}>
+        <i className="fas fa-bars"></i>
+      </div>
       <p>CAPA</p>
       <p>파트너스</p>
     </div>

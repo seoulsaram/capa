@@ -5,7 +5,7 @@ class RequestInfo {
     };
   }
   async getInfo() {
-    const response = await fetch("http://localhost:3002/requests", this.getrequestOptions);
+    const response = await fetch("http://localhost:3001/requests", this.getrequestOptions);
     const res = await response.json();
     return res;
   }
@@ -18,11 +18,11 @@ class RequestInfo {
       filter["material"] &&
       filter["material"].length === 0
     ) {
-      const response = await fetch("http://localhost:3002/requests", this.getrequestOptions);
+      const response = await fetch("http://localhost:3001/requests", this.getrequestOptions);
       const res = await response.json();
       return res;
     } else {
-      const response = await fetch("http://localhost:3002/requests", this.getrequestOptions);
+      const response = await fetch("http://localhost:3001/requests", this.getrequestOptions);
       const res = await response.json();
       const result = res.filter((res) => {
         for (let value of filter[key]) {

@@ -59,13 +59,6 @@ const Filter = ({ handleFilter, reset, filterConsult }) => {
     });
   };
 
-  const countClick = () => {
-    let count = 0;
-    count += count++;
-    filterConsult(count);
-    console.log(count);
-  };
-
   return (
     <section className="section">
       {/* 가공방식 */}
@@ -140,7 +133,7 @@ const Filter = ({ handleFilter, reset, filterConsult }) => {
 
         <div className="filterConsult">
           <input className="resetInput" type="checkbox" id="chk1" />
-          <label className="label" htmlFor="chk1" onClick={countClick}></label>
+          <label className="label" htmlFor="chk1" onClick={filterConsult}></label>
           <p className="consultP">상담중인 요청만 보기</p>
         </div>
       </div>

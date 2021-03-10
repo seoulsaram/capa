@@ -118,3 +118,15 @@
   color: #4b92f3;
   font-size: 0.9rem;
 }
+
+@media screen and (max-width: 768px) {
+  .filterBtnContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filterConsult {
+    margin-left: 10px;
+  }
+}
