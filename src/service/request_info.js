@@ -6,7 +6,7 @@ class RequestInfo {
   }
   async getInfo() {
     const response = await fetch(
-      "https://my-json-server.typicode.com/seoulsaram/jsonDB/requests",
+      "https://github.com/seoulsaram/jsonDB/blob/main/db.json/requests",
       this.getrequestOptions
     );
     const res = await response.json();
@@ -22,7 +22,7 @@ class RequestInfo {
       filter["material"].length === 0
     ) {
       const response = await fetch(
-        "https://my-json-server.typicode.com/seoulsaram/jsonDB/requests",
+        "https://github.com/seoulsaram/jsonDB/blob/main/db.json/requests",
         this.getrequestOptions
       );
       const res = await response.json();
